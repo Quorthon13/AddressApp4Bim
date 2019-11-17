@@ -1,6 +1,6 @@
-Programa AddressApp com persistência utilizando a API JPA.
-Requisitos: 
-  -Compilador java
+Programa AddressApp com persistência utilizando a API JPA.\n
+Requisitos: \n
+  -Compilador java\n
   -PostgreSQL 9/10/11 (Usuário: 'postgres' / Senha: '123456') Obs: podem ser alterados no arquivo SQL.java
   -Criação de uma database 'AddressApp' com o PgAdmin e adição do schema presente nos arquivos do programa('schema_db.sql')
   
