@@ -107,13 +107,7 @@ public class PersonOverviewController {
             personTable.getItems().remove(selectedIndex);
         } else {
             // Nothing selected.
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
-            
-            alert.showAndWait();
+            noSelection();
         }
     }
     
@@ -144,14 +138,16 @@ public class PersonOverviewController {
             }
 
         } else {
-            // Nothing selected.
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
-            
-            alert.showAndWait();
+            noSelection();
         }
+    }
+    private void noSelection(){
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.initOwner(mainApp.getPrimaryStage());
+        alert.setTitle("Sem seleção");
+        alert.setHeaderText("Nenhum contato selecionado");
+        alert.setContentText("Por favor, selecione uma pessoa na tabela.");
+
+        alert.showAndWait();
     }
 }

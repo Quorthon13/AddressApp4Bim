@@ -35,7 +35,19 @@ public class BirthdayStatisticsController {
     @FXML
     private void initialize() {
         // Get an array with the English month names.
-        String[] months = DateFormatSymbols.getInstance(Locale.ENGLISH).getMonths();
+        String[] months = new String[12];
+        months[0] = "Janeiro";
+        months[1] = "Fevereiro";
+        months[2] = "Março";
+        months[3] = "Abril";
+        months[4] = "Maio";
+        months[5] = "Junho";
+        months[6] = "Julho";
+        months[7] = "Agosto";
+        months[8] = "Setembro";
+        months[9] = "Outubro";
+        months[10] = "Novembro";
+        months[11] = "Dezembro";
         // Convert it to a list and add it to our ObservableList of months.
         monthNames.addAll(Arrays.asList(months));
 

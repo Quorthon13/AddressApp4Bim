@@ -47,7 +47,7 @@ public class RootLayoutController {
 
         // Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
+                "Arquivos XML (*.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
 
         // Show save file dialog
@@ -81,7 +81,7 @@ public class RootLayoutController {
 
         // Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
+                "Arquivos XML (*.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
 
         // Show save file dialog
@@ -103,8 +103,9 @@ public class RootLayoutController {
     private void handleAbout() {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("AddressApp");
-    	alert.setHeaderText("About");
-    	alert.setContentText("Author: Marco Jakob\nWebsite: http://code.makery.ch");
+    	alert.setHeaderText("Sobre");
+    	alert.setContentText("Author: Marco Jakob\nWebsite: http://code.makery.ch\n"
+                + "e Diego Demétrio\nGithub: https://github.com/Quorthon13");
 
     	alert.showAndWait();
     }
