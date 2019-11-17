@@ -27,6 +27,8 @@ import ch.makery.address.view.BirthdayStatisticsController;
 import ch.makery.address.view.PersonEditDialogController;
 import ch.makery.address.view.PersonOverviewController;
 import ch.makery.address.view.RootLayoutController;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class MainApp extends Application {
 
@@ -37,11 +39,13 @@ public class MainApp extends Application {
      * The data as an observable list of Persons.
      */
     private ObservableList<Person> personData = FXCollections.observableArrayList();
-
+    public static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
+            .createEntityManagerFactory("JavaHelps");
     /**
      * Constructor
      */
     public MainApp() {
+        
         // Add some sample data
         personData.add(new Person("Hans", "Muster"));
         personData.add(new Person("Ruth", "Mueller"));
