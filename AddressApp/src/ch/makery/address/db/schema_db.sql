@@ -9,6 +9,6 @@ CREATE TABLE Pessoa
         rua VARCHAR(50),
         cidade VARCHAR(50),
         cod_postal VARCHAR(50),
-        data_nasc CHAR(10),
+        data_nasc VARCHAR(10),
 	PRIMARY KEY (cod_CPF)
 );

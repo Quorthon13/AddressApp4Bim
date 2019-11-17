@@ -20,6 +20,7 @@ import ch.makery.address.util.LocalDateAdapter;
  */
 public class Person {
 
+    private final StringProperty codCPF;
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty street;
@@ -49,8 +50,18 @@ public class Person {
         this.postalCode = new SimpleIntegerProperty(1234);
         this.city = new SimpleStringProperty("some city");
         this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+        this.codCPF = new SimpleStringProperty("00000000000");
+    }
+    
+    public String getCodCPF() {
+        return codCPF.get();
     }
 
+    public void setCodCPF(String codCPF) {
+        this.codCPF.set(codCPF);
+    }
+
+    
     public String getFirstName() {
         return firstName.get();
     }
@@ -122,5 +133,14 @@ public class Person {
 
     public ObjectProperty<LocalDate> birthdayProperty() {
         return birthday;
+    }
+    
+    public String getAniversario(){
+        String aniversario;
+        LocalDate birthdayAux;
+        birthdayAux = this.getBirthday();
+        aniversario = birthdayAux.getDayOfMonth() + "-" + birthdayAux.getMonthValue() +
+                      "-" + birthdayAux.getYear();
+        return aniversario;
     }
 }

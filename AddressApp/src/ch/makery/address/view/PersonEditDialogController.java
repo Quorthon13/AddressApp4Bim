@@ -17,6 +17,8 @@ import ch.makery.address.util.DateUtil;
 public class PersonEditDialogController {
 
     @FXML
+    private TextField codCPFField;
+    @FXML
     private TextField firstNameField;
     @FXML
     private TextField lastNameField;
@@ -62,6 +64,7 @@ public class PersonEditDialogController {
     public void setPerson(Person person) {
         this.person = person;
 
+        codCPFField.setText(person.getCodCPF());
         firstNameField.setText(person.getFirstName());
         lastNameField.setText(person.getLastName());
         streetField.setText(person.getStreet());
@@ -92,7 +95,7 @@ public class PersonEditDialogController {
             person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
             person.setCity(cityField.getText());
             person.setBirthday(DateUtil.parse(birthdayField.getText()));
-
+            person.setCodCPF(codCPFField.getText());
             okClicked = true;
             dialogStage.close();
         }
@@ -100,7 +103,7 @@ public class PersonEditDialogController {
 
     /**
      * Called when the user clicks cancel.
-     */
+     */                 
     @FXML
     private void handleCancel() {
         dialogStage.close();
@@ -113,7 +116,9 @@ public class PersonEditDialogController {
      */
     private boolean isInputValid() {
         String errorMessage = "";
-
+        if (codCPFField.getText().length() != 11){
+            errorMessage += "CPF inválido!\n"; 
+        }
         if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
             errorMessage += "Nome inválido!\n"; 
         }

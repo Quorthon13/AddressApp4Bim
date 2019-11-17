@@ -23,10 +23,15 @@ import javax.xml.bind.Unmarshaller;
 
 import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
+import ch.makery.address.table.Pessoa;
+import ch.makery.address.util.SQL;
 import ch.makery.address.view.BirthdayStatisticsController;
 import ch.makery.address.view.PersonEditDialogController;
 import ch.makery.address.view.PersonOverviewController;
 import ch.makery.address.view.RootLayoutController;
+import static java.lang.Integer.parseInt;
+import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -39,23 +44,31 @@ public class MainApp extends Application {
      * The data as an observable list of Persons.
      */
     private ObservableList<Person> personData = FXCollections.observableArrayList();
-    public static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
-            .createEntityManagerFactory("JavaHelps");
     /**
      * Constructor
      */
     public MainApp() {
+        List<Pessoa> pessoas = SQL.getPessoas();
         
-        // Add some sample data
-        personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        for (Pessoa pessoa : pessoas) {
+            String[] data;
+            data = pessoa.getDataNasc().split("-");
+            int dia = parseInt(data[0]);
+            int mes = parseInt(data[1]);
+            int ano = parseInt(data[2].trim());
+            
+            Person person = new Person();
+            
+            person.setFirstName(pessoa.getNomPrim());
+            person.setLastName(pessoa.getNomUlt());
+            person.setPostalCode(parseInt(pessoa.getCodPostal()));
+            person.setStreet(pessoa.getRua());
+            person.setCity(pessoa.getCidade());
+            person.setBirthday(LocalDate.of(ano, mes, dia));
+            person.setCodCPF(pessoa.getCodCPF());
+            System.out.println(person.getAniversario());
+            personData.add(person);
+        }
     }
 
     /**

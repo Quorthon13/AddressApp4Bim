@@ -43,6 +43,17 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
 
+    public Pessoa(String codCPF, String nomPrim, String nomUlt, String rua, String cidade, String codPostal, String dataNasc) {
+        this.codCPF = codCPF;
+        this.nomPrim = nomPrim;
+        this.nomUlt = nomUlt;
+        this.rua = rua;
+        this.cidade = cidade;
+        this.codPostal = codPostal;
+        this.dataNasc = dataNasc;
+    }
+    
+
     public String getCodCPF() {
         return codCPF;
     }
